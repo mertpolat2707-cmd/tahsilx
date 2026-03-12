@@ -1,0 +1,20 @@
+from pydantic import BaseModel, EmailStr, Field
+
+from app.schemas.merchant import MerchantOut
+
+
+class RegisterIn(BaseModel):
+    email: EmailStr
+    phone: str = Field(min_length=8, max_length=32)
+    password: str = Field(min_length=6, max_length=128)
+
+
+class LoginIn(BaseModel):
+    email: EmailStr
+    password: str = Field(min_length=6, max_length=128)
+
+
+class TokenOut(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    merchant: MerchantOut
