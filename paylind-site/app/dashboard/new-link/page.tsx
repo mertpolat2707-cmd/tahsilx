@@ -36,7 +36,7 @@ export default function NewLinkPage() {
       },
       body: JSON.stringify({
         title,
-        amount_tl: Number(amount),
+        amount: Number(amount),
         description,
         expires_at: expiresAt || null,
         installment,
